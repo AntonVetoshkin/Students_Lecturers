@@ -7,8 +7,7 @@ with open('recipies.txt', encoding='UTF-8') as f:
 
     for i in range(1, (count + 1)):
         a = (f.readline().strip('\n').split('|'))
-        c = int(a[1])
-        a[1] = c
+        a[1] = int(a[1])
         b = ('ingredient_name', 'quantity', 'measure')
         dish_list.append(dict(zip(b, a)))
     print(dish_list)
