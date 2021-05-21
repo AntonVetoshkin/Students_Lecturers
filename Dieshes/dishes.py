@@ -1,25 +1,18 @@
-with open('recipies.txt', encoding='UTF-8') as f:
-    book = {}
-    book.setdefault(f.readline().strip('\n'))
-    print(book)
-    count = int(f.readline())
-    dish_list = []
-
-    for i in range(1, (count + 1)):
-        a = (f.readline().strip('\n').split('|'))
-        c = int(a[1])
-        a[1] = c
-        b = ('ingredient_name', 'quantity', 'measure')
-        dish_list.append(dict(zip(b, a)))
-    print(dish_list)
-
-
-    # c = 0
-    # for line in f:
-    #     if line == '\n':
-    #         c += 1
-    # dish_quantity = c + 1
-    # print(dish_quantity)
-
+with open('recipies.txt', encoding='UTF-8') as file_work:
+    cook_dict = {}
+    for line in file_work:
+        dish_name = line.strip('\n')
+        counter = int(file_work.readline())
+        list_of_ingridient = []
+        for i in range(1, (counter + 1)):
+            temp_dict = {}
+            ingridient = file_work.readline().strip('\n').split('|')
+            ingridient[1] = int(ingridient[1])
+            keys = ('ingredient_name', 'quantity', 'measure')
+            temp_dict.update(dict(zip(keys, ingridient)))
+            list_of_ingridient.append(temp_dict)
+        cook_dict[dish_name] = list_of_ingridient
+        file_work.readline()
+    print(cook_dict)
 
 
