@@ -13,6 +13,18 @@ with open('recipies.txt', encoding='UTF-8') as file_work:
             list_of_ingridient.append(temp_dict)
         cook_dict[dish_name] = list_of_ingridient
         file_work.readline()
-    print(cook_dict)
 
+
+def get_shop_list_by_dishes(dishes, person_count):
+    order = {}
+    for dish in dishes:
+        for dish_name, recipe in cook_dict.items():
+            if dish in dish_name:
+                order_temp = {}
+                for ingr in recipe:
+                    order_temp.update({(ingr['ingredient_name']): {ingr['quantity']*person_count, ingr['measure']}})
+                order.update(order_temp)
+    print(order)
+
+get_shop_list_by_dishes(['Запеченный картофель','Омлет'], 2)
 
